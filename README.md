@@ -23,7 +23,7 @@
 Схема базы данных
 -----------------
 
-###Данная система имеет следующие связи:
+### Данная система имеет следующие связи:
 
 * Супердомены, домены и поддомены образуют дерево
 * Журнал может относится к нескольким поддоменам, один поддомен содержит несколько журналов
@@ -32,32 +32,32 @@
 * Каждая статья имеет только одну дату выпуска (год и квартал)
 * Каждое словосочетание принадлежит либо к типу биграм либо триграм
 
-###Таблицы
+### Таблицы
 
-####Супердомены (primary_domains)
+#### Супердомены (primary_domains)
 1. id smallserial primary key
 2. name varchar
 
-####Домены (domains)
+#### Домены (domains)
 1. id smallserial primary key
 2. name varchar
 3. primary_id references primary_domains (id)
 
-####Поддомены (subdomains)
+#### Поддомены (subdomains)
 1. id smallserial primary_id primary key
 2. name varchar
 3. domain_id references domains (id)
 
-####Журналы (journals)
+#### Журналы (journals)
 1. id serial primary key
 2. name varchar
 
-####Таблица связи поддоменов и журналов (subdomains_journals)
+#### Таблица связи поддоменов и журналов (subdomains_journals)
 1. subdomain_id smallint references subdomains (id)
 2. journal_id integer references journals (id)
    primary key (subdomain_id, journal_id)
 
-####Статьи (articles)
+#### Статьи (articles)
 1. id serial primary key
 2. name varchar
 3. doi varchar
@@ -65,24 +65,24 @@
 5. pub_qarter_id smallint references quarters (id)
 6. journal_id integer references journals (id)
 
-####Года (years)
+#### Года (years)
 1. id smallserial primary key
 2. year smallint
 
-####Кварталы
+#### Кварталы
 1. id smallserial primary key
 2. name varchar(2)
 
-####Словосочетания (collocations)
+#### Словосочетания (collocations)
 1. id serial primary key
 2. collocation varchar
 3. col_type_id smallint references collocation_types (id)
 
-####Таблица связи статей и словосочетаний (articles_collocations)
+#### Таблица связи статей и словосочетаний (articles_collocations)
 1. article_id references articles (id)
 2. collocation_id references collocations (id)
    primary key (article_id collocation_id)
 
-####Таблица типов словосочетаний
+#### Таблица типов словосочетаний
 1. id smallserial primary key
 2. type varchar
