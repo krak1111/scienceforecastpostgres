@@ -1,5 +1,5 @@
-import connect
-from init_commands import creating_commands, references
+from dbwriter import connect
+from dbwriter.init_commands import creating_commands, references
 
 def main():
 

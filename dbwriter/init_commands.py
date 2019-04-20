@@ -39,7 +39,7 @@ creating_commands = (
         doi VARCHAR NOT NULL,
         pub_year_id SMALLINT NOT NULL,
         pub_quarter_id SMALLINT NOT NULL,
-        journal_id SMALLINT NOT NULL
+        journal_id INT NOT NULL
     )
     """,
     """
